@@ -35,38 +35,32 @@ limitations under the License.
 
 > Copy values from one complex double-precision floating-point vector to another complex double-precision floating-point vector.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-base-wasm-zcopy
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-zcopy = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-wasm-zcopy@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var zcopy = require( 'path/to/vendor/umd/blas-base-wasm-zcopy/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-wasm-zcopy@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.zcopy;
-})();
-</script>
+var zcopy = require( '@stdlib/blas-base-wasm-zcopy' );
 ```
 
 #### zcopy.main( N, x, strideX, y, strideY )
@@ -75,8 +69,6 @@ Copies values from `x` into `y`.
 
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 // Define strided arrays...
 var x = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
@@ -84,15 +76,7 @@ var y = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
 // Perform operation:
 zcopy.main( x.length, x, 1, y, 1 );
-
-var v = y.get( 0 );
-// returns <Complex128>
-
-var re = real( v );
-// returns 1.0
-
-var im = imag( v );
-// returns 2.0
+// y => <Complex128Array>[ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ]
 ```
 
 The function has the following parameters:
@@ -107,22 +91,12 @@ The `N` and stride parameters determine how values from `x` are copied into `y`.
 
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var x = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
 var y = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
 zcopy.main( 2, x, -2, y, 1 );
-
-var v = y.get( 0 );
-// returns <Complex128>
-
-var re = real( v );
-// returns 5.0
-
-var im = imag( v );
-// returns 6.0
+// y => <Complex128Array>[ 5.0, 6.0, 1.0, 2.0, 0.0, 0.0, 0.0, 0.0 ]
 ```
 
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
@@ -131,8 +105,6 @@ Note that indexing is relative to the first index. To introduce an offset, use [
 
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 // Initial arrays...
 var x0 = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
@@ -144,15 +116,7 @@ var y1 = new Complex128Array( y0.buffer, y0.BYTES_PER_ELEMENT*2 ); // start at 3
 
 // Copy every other value from `x1` into `y1` in reverse order...
 zcopy.main( 2, x1, -2, y1, 1 );
-
-var z = y0.get( 2 );
-// returns <Complex128>
-
-var re = real( z );
-// returns 7.0
-
-var im = imag( z );
-// returns 8.0
+// y0 => <Complex128Array>[ 0.0, 0.0, 0.0, 0.0, 7.0, 8.0, 3.0, 4.0 ]
 ```
 
 #### zcopy.ndarray( N, x, strideX, offsetX, y, strideY, offsetY )
@@ -161,22 +125,12 @@ Copies values from `x` into `y` using alternative indexing semantics.
 
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var x = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
 var y = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
 zcopy.ndarray( x.length, x, 1, 0, y, 1, 0 );
-
-var v = y.get( 0 );
-// returns <Complex128>
-
-var re = real( v );
-// returns 1.0
-
-var im = imag( v );
-// returns 2.0
+// y => <Complex128Array>[ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ]
 ```
 
 The function has the following additional parameters:
@@ -188,22 +142,12 @@ While [`typed array`][mdn-typed-array] views mandate a view offset based on the 
 
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var x = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
 var y = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 
 zcopy.ndarray( 2, x, 2, 1, y, -1, y.length-1 );
-
-var z = y.get( y.length-1 );
-// returns <Complex128>
-
-var re = real( z );
-// returns 3.0
-
-var im = imag( z );
-// returns 4.0
+// y => <Complex128Array>[ 0.0, 0.0, 0.0, 0.0, 7.0, 8.0, 3.0, 4.0 ]
 ```
 
 * * *
@@ -392,18 +336,13 @@ The function has the following additional parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/assert-has-wasm-support@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-one-to@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-zeros@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-complex128@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/strided-base-reinterpret-complex128@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-wasm-zcopy@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var hasWebAssemblySupport = require( '@stdlib/assert-has-wasm-support' );
+var oneTo = require( '@stdlib/array-one-to' );
+var zeros = require( '@stdlib/array-zeros' );
+var Complex128Array = require( '@stdlib/array-complex128' );
+var reinterpretComplex128 = require( '@stdlib/strided-base-reinterpret-complex128' );
+var zcopy = require( '@stdlib/blas-base-wasm-zcopy' );
 
 // Specify a vector length:
 var N = 5;
@@ -420,11 +359,6 @@ zcopy.ndarray( N, x, 1, 0, y, -1, N-1 );
 // Print the results:
 console.log( reinterpretComplex128( y, 0 ) );
 // => <Float64Array>[ 9.0, 10.0, 7.0, 8.0, 5.0, 6.0, 3.0, 4.0, 1.0, 2.0 ]
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -517,13 +451,13 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/complex128]: https://github.com/stdlib-js/array-complex128/tree/umd
+[@stdlib/array/complex128]: https://github.com/stdlib-js/array-complex128
 
-[@stdlib/wasm/memory]: https://github.com/stdlib-js/wasm-memory/tree/umd
+[@stdlib/wasm/memory]: https://github.com/stdlib-js/wasm-memory
 
-[@stdlib/wasm/module-wrapper]: https://github.com/stdlib-js/wasm-module-wrapper/tree/umd
+[@stdlib/wasm/module-wrapper]: https://github.com/stdlib-js/wasm-module-wrapper
 
-[@stdlib/blas/base/zcopy]: https://github.com/stdlib-js/blas-base-zcopy/tree/umd
+[@stdlib/blas/base/zcopy]: https://github.com/stdlib-js/blas-base-zcopy
 
 </section>
 
