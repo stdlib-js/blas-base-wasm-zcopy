@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-03-24)
+## Unreleased (2025-04-22)
 
 <section class="features">
 
@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`074055b`](https://github.com/stdlib-js/stdlib/commit/074055b3bd0bb5982abef3cc69b4cab5f2c3942a) - **docs:** remove unused import in various examples in `blas/base/wasm` [(#6782)](https://github.com/stdlib-js/stdlib/pull/6782) _(by Shabareesh Shetty)_
 -   [`2d26990`](https://github.com/stdlib-js/stdlib/commit/2d26990255c7d3ef2396f2d8c7ebf545e7ba41ee) - **docs:** update examples for `blas/base/wasm/zcopy` [(#5442)](https://github.com/stdlib-js/stdlib/pull/5442) _(by Gururaj Gurram)_
 -   [`e28cc73`](https://github.com/stdlib-js/stdlib/commit/e28cc73ce4cae0a780006c8256ca58f901b18624) - **feat:** add `blas/base/wasm/zcopy` [(#3982)](https://github.com/stdlib-js/stdlib/pull/3982) _(by Aman Bhansali, Athan Reines, stdlib-bot)_
 
@@ -35,11 +36,12 @@
 
 ### Contributors
 
-A total of 3 people contributed to this release. Thank you to the following contributors:
+A total of 4 people contributed to this release. Thank you to the following contributors:
 
 -   Aman Bhansali
 -   Athan Reines
 -   Gururaj Gurram
+-   Shabareesh Shetty
 
 </section>
 
