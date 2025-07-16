@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-05-26)
+## Unreleased (2025-07-16)
 
 <section class="features">
 
@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`2ec2116`](https://github.com/stdlib-js/stdlib/commit/2ec2116fb43058cddc4bf726defbe60823bd2590) - **docs:** fix typo _(by Athan Reines)_
 -   [`23c60da`](https://github.com/stdlib-js/stdlib/commit/23c60daf037b609ab1315f45448e0ba52a89c247) - **docs:** remove spaces before periods _(by Philipp Burckhardt)_
 -   [`074055b`](https://github.com/stdlib-js/stdlib/commit/074055b3bd0bb5982abef3cc69b4cab5f2c3942a) - **docs:** remove unused import in various examples in `blas/base/wasm` [(#6782)](https://github.com/stdlib-js/stdlib/pull/6782) _(by Shabareesh Shetty)_
 -   [`2d26990`](https://github.com/stdlib-js/stdlib/commit/2d26990255c7d3ef2396f2d8c7ebf545e7ba41ee) - **docs:** update examples for `blas/base/wasm/zcopy` [(#5442)](https://github.com/stdlib-js/stdlib/pull/5442) _(by Gururaj Gurram)_
